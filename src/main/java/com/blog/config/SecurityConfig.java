@@ -42,9 +42,10 @@ public class SecurityConfig{
                 .exceptionHandling(handling ->{
 					try {
 						handling
-						                                                         .authenticationEntryPoint(this.jwtAuthenticationEntryPoint).and().sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
-						                                                         csrf(csrf -> csrf.disable())
-						                                                         .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/login").permitAll()					                                                                 .anyRequest().authenticated());
+						        .authenticationEntryPoint(this.jwtAuthenticationEntryPoint).and()
+							.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+							.csrf(csrf -> csrf.disable())
+						        .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/login").permitAll().anyRequest().authenticated());
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
